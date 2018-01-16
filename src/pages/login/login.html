@@ -9,21 +9,15 @@
     <ion-title >Login</ion-title>
   </ion-navbar>
 </ion-header>
-
-
 <ion-content padding>
   <ion-grid>
-    <ion-row>
-      <ion-col col-8 offset-2>
-  <img src="../../assets/imgs/hc.png">
-      </ion-col>
-    </ion-row>
+  <img [src]="companyLogo" >
       <ion-card>
         <ion-card-header text-center>
           <div>
             Login
             <button float-end (click)="showPrompt()">
-              <ion-icon [name]="icon" style="zoom: 2.0;"></ion-icon>
+              <ion-icon [name]="settings" style="zoom: 2.0;"></ion-icon>
             </button>
           </div>
         </ion-card-header>
@@ -37,7 +31,7 @@
             <ion-input type="password" [(ngModel)]="password"></ion-input>
           </ion-item>
           <ion-grid>
-            <button ion-button (click)="authorizeUser(username, password)">Login</button>
+            <button ion-button (click)="getAuthToken(username, password)">Login</button>
           </ion-grid>
         </ion-card-content>
       </ion-card>

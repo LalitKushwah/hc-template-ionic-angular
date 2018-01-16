@@ -14,13 +14,14 @@ import {LoginModel} from "../../models/login";
 export class LoginPage {
   username: string;
   password: string;
-  icon: string = 'settings';
   loader: Loading;
+  companyLogo: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public auth: AuthProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
+    this.companyLogo =  '../../assets/imgs/hc.png';
   }
 
-  authorizeUser(username, password){
+  getAuthToken(username, password){
     if(localStorage.getItem('baseUrl') == null) {
       this.showToast('Please Enter Tenant URL before logging in');
     }

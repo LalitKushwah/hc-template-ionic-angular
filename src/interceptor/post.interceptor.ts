@@ -14,9 +14,9 @@ import {AuthProvider} from "../providers/auth/auth";
 export class PostInterceptor implements HttpInterceptor {
   intercept (req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     var postReq = null;
-    if(req.headers.get('Authorization')) {
+    if(AuthProvider.getToken() != null) {
       postReq = req.clone({
-        headers: req.headers.set('Authorization', AuthProvider.getToken())
+        headers: req.headers.set('Authorization', AuthProvider.getToken()).append('Content-Type', 'application/x-www-form-urlencoded')
       });
     }
     else{
