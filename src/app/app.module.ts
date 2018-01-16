@@ -6,25 +6,40 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import {LoginPage} from "../pages/login/login";
+import {LoginPageModule} from "../pages/login/login.module";
+import {HomePageModule} from "../pages/home/home.module";
+import { AuthProvider } from '../providers/auth/auth';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { PostInterceptor } from "../interceptor/post.interceptor";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
   ],
   imports: [
     BrowserModule,
+    LoginPageModule,
+    HomePageModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: PostInterceptor,
+      multi: true
+    },
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider
   ]
 })
 export class AppModule {}
