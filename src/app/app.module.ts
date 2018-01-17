@@ -12,6 +12,7 @@ import {HomePageModule} from "../pages/home/home.module";
 import { AuthProvider } from '../providers/auth/auth';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { PostInterceptor } from "../interceptor/post.interceptor";
+import {WidgetUtils} from "../shared/widget.util";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { PostInterceptor } from "../interceptor/post.interceptor";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    WidgetUtils
   ]
 })
 export class AppModule {}
