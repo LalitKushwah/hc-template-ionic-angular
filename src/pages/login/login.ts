@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Loading } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginModel } from "../../models/login";
-import { Dialog } from "../../shared/widget.util";
+import { WidgetUtils } from "../../shared/widget.util";
 
 @IonicPage()
 @Component({
