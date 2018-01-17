@@ -13,8 +13,6 @@ import { HcService } from "hc-lib/dist/hc.service";
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  username: string;
-  password: string;
   loader: Loading;
   companyLogo: string;
 
