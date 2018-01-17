@@ -9,9 +9,6 @@ import { HomePage } from '../pages/home/home';
 import {LoginPage} from "../pages/login/login";
 import {LoginPageModule} from "../pages/login/login.module";
 import {HomePageModule} from "../pages/home/home.module";
-import { AuthProvider } from '../providers/auth/auth';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { PostInterceptor } from "../interceptor/post.interceptor";
 import {WidgetUtils} from "../shared/widget.util";
 import {HcModule} from "hc-lib/dist/hc.module";
 @NgModule({
@@ -22,7 +19,6 @@ import {HcModule} from "hc-lib/dist/hc.module";
     BrowserModule,
     LoginPageModule,
     HomePageModule,
-    HttpClientModule,
     HcModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -33,15 +29,9 @@ import {HcModule} from "hc-lib/dist/hc.module";
     LoginPage
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: PostInterceptor,
-      multi: true
-    },
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider,
     WidgetUtils
   ]
 })

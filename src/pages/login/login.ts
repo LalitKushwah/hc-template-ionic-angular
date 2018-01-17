@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Loading } from 'ionic-angular';
-import { AuthProvider } from '../../providers/auth/auth';
 import { LoginModel } from "../../models/login";
 import { WidgetUtils } from "../../shared/widget.util";
 
@@ -16,7 +15,7 @@ export class LoginPage {
   loader: Loading;
   companyLogo: string;
 
-  constructor(private navCtrl: NavController, private navParams: NavParams, private auth: AuthProvider, private dialog: Dialog) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, private dialog: WidgetUtils, public hcService: HcService) {
     this.companyLogo =  '../../assets/imgs/hc.png';
   }
 
@@ -25,17 +24,17 @@ export class LoginPage {
       this.dialog.showToast('Please Enter Tenant URL before logging in');
     }
     else {
-      this.showLoading();
+      this.dialog.showLoading();
       this.hcService.doLogin(localStorage.getItem('baseUrl'), username, password)
         .subscribe((data: LoginModel) => {
             localStorage.setItem('token', data.token);
-            this.hideLoading();
+            this.dialog.hideLoading();
             this.navCtrl.setRoot('HomePage', {data: data});
           },
           (err) => {
             if (this.loader)
-              this.hideLoading();
-            this.showToast(err.statusText);
+              this.dialog.hideLoading();
+            this.dialog.showToast(err.statusText);
             console.log(err);
           }
         );
