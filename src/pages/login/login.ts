@@ -4,6 +4,9 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { LoginModel } from "../../models/login";
 import { WidgetUtils } from "../../shared/widget.util";
 
+
+import { HcService } from "hc-lib/dist/hc.service";
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -22,20 +25,33 @@ export class LoginPage {
       this.dialog.showToast('Please Enter Tenant URL before logging in');
     }
     else {
-      this.dialog.showLoading();
-      this.auth.doLogin(username, password).subscribe(
-        (data: LoginModel) => {
-          localStorage.setItem('token', data.token);
-          this.dialog.hideLoading();
-          this.navCtrl.setRoot('HomePage', {data: data});
-        },
-        (err) => {
-          if (this.loader)
-            this.dialog.hideLoading();
-          this.dialog.showToast(err.statusText);
-          console.log(err);
-        }
-      );
+      this.showLoading();
+      this.hcService.doLogin(localStorage.getItem('baseUrl'), username, password)
+        .subscribe((data: LoginModel) => {
+            localStorage.setItem('token', data.token);
+            this.hideLoading();
+            this.navCtrl.setRoot('HomePage', {data: data});
+          },
+          (err) => {
+            if (this.loader)
+              this.hideLoading();
+            this.showToast(err.statusText);
+            console.log(err);
+          }
+        );
+      // this.auth.doLogin(username, password).subscribe(
+      //   (data: LoginModel) => {
+      //     localStorage.setItem('token', data.token);
+      //     this.hideLoading();
+      //     this.navCtrl.setRoot('HomePage', {data: data});
+      //   },
+      //   (err) => {
+      //     if (this.loader)
+      //       this.hideLoading();
+      //     this.showToast(err.statusText);
+      //     console.log(err);
+      //   }
+      // );
     }
   }
 

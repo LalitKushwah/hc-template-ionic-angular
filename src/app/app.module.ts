@@ -13,7 +13,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { PostInterceptor } from "../interceptor/post.interceptor";
 import {WidgetUtils} from "../shared/widget.util";
-
+import {HcModule} from "hc-lib/dist/hc.module";
 @NgModule({
   declarations: [
     MyApp,
@@ -23,6 +23,7 @@ import {WidgetUtils} from "../shared/widget.util";
     LoginPageModule,
     HomePageModule,
     HttpClientModule,
+    HcModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
