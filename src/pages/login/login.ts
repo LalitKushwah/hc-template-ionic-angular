@@ -3,8 +3,9 @@ import {
   IonicPage, NavController, NavParams, LoadingController, Loading, ToastController,
   AlertController
 } from 'ionic-angular';
-import { AuthProvider } from '../../providers/auth/auth';
 import {LoginModel} from "../../models/login";
+
+import { HcService } from "hc-lib/dist/hc.service";
 
 @IonicPage()
 @Component({
@@ -17,7 +18,7 @@ export class LoginPage {
   loader: Loading;
   companyLogo: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public auth: AuthProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,public hcService: HcService, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
     this.companyLogo =  '../../assets/imgs/hc.png';
   }
 
@@ -27,19 +28,32 @@ export class LoginPage {
     }
     else {
       this.showLoading();
-      this.auth.doLogin(username, password).subscribe(
-        (data: LoginModel) => {
-          localStorage.setItem('token', data.token);
-          this.hideLoading();
-          this.navCtrl.setRoot('HomePage', {data: data});
-        },
-        (err) => {
-          if (this.loader)
+      this.hcService.doLogin(localStorage.getItem('baseUrl'), username, password)
+        .subscribe((data: LoginModel) => {
+            localStorage.setItem('token', data.token);
             this.hideLoading();
-          this.showToast(err.statusText);
-          console.log(err);
-        }
-      );
+            this.navCtrl.setRoot('HomePage', {data: data});
+          },
+          (err) => {
+            if (this.loader)
+              this.hideLoading();
+            this.showToast(err.statusText);
+            console.log(err);
+          }
+        );
+      // this.auth.doLogin(username, password).subscribe(
+      //   (data: LoginModel) => {
+      //     localStorage.setItem('token', data.token);
+      //     this.hideLoading();
+      //     this.navCtrl.setRoot('HomePage', {data: data});
+      //   },
+      //   (err) => {
+      //     if (this.loader)
+      //       this.hideLoading();
+      //     this.showToast(err.statusText);
+      //     console.log(err);
+      //   }
+      // );
     }
   }
 
