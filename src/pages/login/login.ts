@@ -12,8 +12,6 @@ import {LoginModel} from "../../models/login";
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  username: string;
-  password: string;
   loader: Loading;
   companyLogo: string;
 
