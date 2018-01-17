@@ -17,21 +17,21 @@
           <div>
             Login
             <button float-end (click)="showPrompt()">
-              <ion-icon [name]="settings" style="zoom: 2.0;"></ion-icon>
+              <ion-icon name="settings" style="zoom: 2.0;"></ion-icon>
             </button>
           </div>
         </ion-card-header>
         <ion-card-content>
           <ion-item>
             <ion-label floating color="primary">Username</ion-label>
-            <ion-input type="text" [(ngModel)]="username"></ion-input>
+            <ion-input type="text" #username></ion-input>
           </ion-item>
           <ion-item>
             <ion-label floating>Password</ion-label>
-            <ion-input type="password" [(ngModel)]="password"></ion-input>
+            <ion-input type="password" #password></ion-input>
           </ion-item>
           <ion-grid>
-            <button ion-button (click)="getAuthToken(username, password)">Login</button>
+            <button ion-button (click)="getAuthToken(username.value, password.value)">Login</button>
           </ion-grid>
         </ion-card-content>
       </ion-card>

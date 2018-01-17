@@ -12,7 +12,8 @@ import {HomePageModule} from "../pages/home/home.module";
 import { AuthProvider } from '../providers/auth/auth';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { PostInterceptor } from "../interceptor/post.interceptor";
-
+import {WidgetUtils} from "../shared/widget.util";
+import {HcModule} from "hc-lib/dist/hc.module";
 @NgModule({
   declarations: [
     MyApp,
@@ -22,6 +23,7 @@ import { PostInterceptor } from "../interceptor/post.interceptor";
     LoginPageModule,
     HomePageModule,
     HttpClientModule,
+    HcModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -39,7 +41,8 @@ import { PostInterceptor } from "../interceptor/post.interceptor";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    WidgetUtils
   ]
 })
 export class AppModule {}
