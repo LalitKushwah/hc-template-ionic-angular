@@ -35,12 +35,21 @@ export class PostInterceptor implements HttpInterceptor {
       cloneRequest = req.clone();
     }
     
+    // The code we are writing is nice and compact but hard to debug for old school person like me.
+    
+    // We should call the next.handle and get the return object in a variable. 
+    // Then see what is the content on it.
+    // as per the api of handle method, httpevent is returned and it is observable 
+    // What do we really want to do with it ?    
+    
+    
     // I see that we are calling, next.handle. 
     // I also know that handle method returns HttpEvent
     // What is the role of "do" ?
     // http://reactivex.io/documentation/operators/do.html
     
     return next.handle(cloneRequest).do((event: HttpEvent<any>) => {
+        // If we don't want to do anything on success, we should not even add a listener to it.
         if (event instanceof HttpResponse) {
           // do stuff with response if you want
         }
