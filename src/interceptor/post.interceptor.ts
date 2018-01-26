@@ -41,6 +41,7 @@ export class PostInterceptor implements HttpInterceptor {
     // Then see what is the content on it.
     // as per the api of handle method, httpevent is returned and it is observable 
     // What do we really want to do with it ?    
+    // https://medium.com/@benlesh/learning-observable-by-building-observable-d5da57405d87
     
     
     // I see that we are calling, next.handle. 
