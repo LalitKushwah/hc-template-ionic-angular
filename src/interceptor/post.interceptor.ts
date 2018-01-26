@@ -9,12 +9,13 @@ import {LoginPage} from "../pages/login/login";
 @Injectable()
 export class PostInterceptor implements HttpInterceptor {
 
-    constructor(public app: App,public authService:AuthService){};
+  constructor(public app: App,public authService:AuthService){};
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let cloneRequest =null;
       let authenticationToken = localStorage.getItem('token');
 
+   // If we are going to clone the req anyways, why not keep it out of the following condition statement and clone it as we initialize the variable.
     if(authenticationToken != null) {
       cloneRequest = req.clone({
         headers: req.headers.set('Bearer',authenticationToken).append('Content-Type', 'application/json')
