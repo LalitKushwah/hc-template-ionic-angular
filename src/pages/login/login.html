@@ -6,6 +6,9 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
+      <!--
+      The content/text should be internationalized.
+      -->
     <ion-title >Login</ion-title>
   </ion-navbar>
 </ion-header>
@@ -13,6 +16,10 @@
   <ion-grid>
   <img [src]="companyLogo" >
       <ion-card>
+          <!--
+          We should not apply css classes like text-center to the component. It is upto the designer to decide.
+          The same is true for zoom:2.0 or color primary.
+          -->
         <ion-card-header text-center>
           <div>
             Login
