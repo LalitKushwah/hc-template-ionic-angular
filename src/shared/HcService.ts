@@ -7,6 +7,9 @@ import {LoginPage} from "../pages/login/login";
 @Injectable()
 export class HcService {
 
+  // I don't understant the logic here. Why will be break the domain name in so many parts. 
+  // We don't have rule that all clients will be subdomain of hotwax.co
+  
   private baseUrlPrefix: string = 'https://';
   private baseUrlSuffix: string = '.hotwax.co/api/control/';
   private loginServiceRoute = 'getAuthenticationToken';
@@ -19,11 +22,14 @@ export class HcService {
   }
 
   doLogout(){
+      // Do we want to inform the server? Why not tell the server that that the token is invalid now.
     localStorage.removeItem('token');
    // this.navCtrl.push(LoginPage);
   }
 
   fireCachedRequest(cachedRequest) {
+      // I am not convinced with this respnsibility assignment.
+      // If this code is responsible for continuing user on their journer after login, it should be part of the invercepter.
     return this.http.request(cachedRequest);
   }
 }
