@@ -34,7 +34,10 @@ export class PostInterceptor implements HttpInterceptor {
     else{
       cloneRequest = req.clone();
     }
-
+    
+    // I see that we are calling, next.handle. 
+    // I also know that handle method returns HttpEvent
+    // What is the role of "do" ?
     return next.handle(cloneRequest).do((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
           // do stuff with response if you want
@@ -52,5 +55,7 @@ export class PostInterceptor implements HttpInterceptor {
           }
         }
       });
+    // What is being returned from this function?
+    
   }
 }
