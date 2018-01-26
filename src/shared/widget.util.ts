@@ -28,6 +28,7 @@ export class WidgetUtils {
   }
 
   showPrompt() {
+    // Internationalisation is table feature of enterprise sdk. Cannot move forward without it.
     let prompt = this.alertCtrl.create({
       title: 'Tenant URL',
       message: "Enter the name of instance. Do not enter complete URL, just enter the name of instance",
