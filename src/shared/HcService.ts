@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {HttpParams} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import {NavController} from "ionic-angular";
-import {LoginPage} from "../pages/login/login";
+
 @Injectable()
 export class HcService {
 
-  // I don't understant the logic here. Why will be break the domain name in so many parts. 
+  // I don't understant the logic here. Why will be break the domain name in so many parts.
   // We don't have rule that all clients will be subdomain of hotwax.co
-  
+  // Reply: Ans -> It is just WIP
   private baseUrlPrefix: string = 'https://';
   private baseUrlSuffix: string = '.hotwax.co/api/control/';
   private loginServiceRoute = 'getAuthenticationToken';
@@ -23,8 +21,8 @@ export class HcService {
 
   doLogout(){
       // Do we want to inform the server? Why not tell the server that that the token is invalid now.
+      // @Lalit: Yes, we should inform to server. Till now there isn't any service for expiring token at server
     localStorage.removeItem('token');
-   // this.navCtrl.push(LoginPage);
   }
 
   fireCachedRequest(cachedRequest) {

@@ -12,7 +12,7 @@ import {HomePageModule} from "../pages/home/home.module";
 import {WidgetUtils} from "../shared/widget.util";
 import {HcService} from "../shared/HcService";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {PostInterceptor} from "../interceptor/post.interceptor";
+import {AuthInterceptor} from "../interceptor/post.interceptor";
 import {AuthService} from "../shared/AuthService";
 
 
@@ -38,17 +38,12 @@ import {AuthService} from "../shared/AuthService";
     SplashScreen,
     HcService,
     AuthService,
-    {provide: HTTP_INTERCEPTORS, useClass: PostInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     WidgetUtils
   ]
 })
 export class AppModule {
-
-  public static map;
-  constructor() {
-    AppModule.map = new Map();
-  }
-  public redirectToLogin(screen) {
-  }
 }
+
+
