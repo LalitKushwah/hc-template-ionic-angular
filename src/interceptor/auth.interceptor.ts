@@ -57,7 +57,8 @@ export class AuthInterceptor implements HttpInterceptor {
     // I also know that handle method returns HttpEvent
     // What is the role of "do" ?
     // http://reactivex.io/documentation/operators/do.html
-
+    // http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-do
+    
     return next.handle(cloneRequest).do((err: any) => {
         // If we don't want to do anything on success, we should not even add a listener to it.
         if (err instanceof HttpErrorResponse) {
