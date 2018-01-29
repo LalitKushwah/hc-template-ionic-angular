@@ -27,7 +27,13 @@ export class HcService {
 
   fireCachedRequest(cachedRequest) {
       // I am not convinced with this respnsibility assignment.
-      // If this code is responsible for continuing user on their journer after login, it should be part of the invercepter.
+      // If this code is responsible for continuing user on their journer after login, it should be part of the invercepter.\
+    /*@Lalit: This code is only for firing cached http request as this file is used for firing http request, I thik this code should be here
+    we have done the responsibilty assignment in the login.ts which decides what will be the next screen  */
+    //@Lalit: Why we are using login.ts for responsibility assignment?
+    /* @Lalit: As we have only a single entry point for login in our SDK so we should decide our next action after login using this single entry point
+      whether it should be  normal flow or interupt one*/
+    //We should keep our Interceptor generic, responsible only for attaching headers and checking authentication
     return this.http.request(cachedRequest);
   }
 }

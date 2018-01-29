@@ -11,9 +11,11 @@ import {LoginPageModule} from "../pages/login/login.module";
 import {HomePageModule} from "../pages/home/home.module";
 import {WidgetUtils} from "../shared/widget.util";
 import {HcService} from "../shared/HcService";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {AuthInterceptor} from "../interceptor/post.interceptor";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor} from "../interceptor/auth.interceptor";
 import {AuthService} from "../shared/AuthService";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 
 @NgModule({
@@ -25,7 +27,15 @@ import {AuthService} from "../shared/AuthService";
     LoginPageModule,
     HomePageModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,6 +54,9 @@ import {AuthService} from "../shared/AuthService";
   ]
 })
 export class AppModule {
+}
+export function createTranslateLoader(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
 
 

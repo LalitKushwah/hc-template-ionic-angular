@@ -58,7 +58,7 @@ export class AuthInterceptor implements HttpInterceptor {
     // What is the role of "do" ?
     // http://reactivex.io/documentation/operators/do.html
     // http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-do
-    
+
     return next.handle(cloneRequest).do((err: any) => {
         // If we don't want to do anything on success, we should not even add a listener to it.
         if (err instanceof HttpErrorResponse) {
@@ -74,6 +74,8 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       });
     // What is being returned from this function?
+    //@Lalit: Returns a mirrored Observable of the source Observable, but modified so that the provided Observer is called to perform a side effect for every value, error, and completion emitted by the source. Any errors that are thrown in the aforementioned Observer or handlers are safely sent down the error path of the output Observable.
+    //Reference: http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-do
 
   }
 }

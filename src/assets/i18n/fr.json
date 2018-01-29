@@ -1,0 +1,15 @@
+{
+  "Login":"S'identifier",
+  "Logout":"Connectez - Out",
+  "Home":"Accueil",
+  "Username":"Nom d'utilisateur",
+  "Password":"Mot de passe",
+  "promptTitle":"URL du locataire",
+  "promptMessage":"Entrez le nom de l'instance. Ne pas entrer l'URL complète, il suffit d'entrer le nom de l'instance",
+  "url":"url",
+  "cancel":"Annuler",
+  "save":"sauvegarder",
+  "loadingMsg":"Se connecter...",
+  "tenantUrlRequired":"Veuillez entrer l'URL du locataire avant de vous connecter"
+}
+

@@ -7,21 +7,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>{{'Home' | translate}}</ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header>`
 
 
 <ion-content padding>
     {{responseData?.token}}
   <ion-item>
-    <button ion-button (click)="logout()"> Products </button>
+    <button ion-button (click)="logout()">{{'Logout' | translate}}</button>
   </ion-item>
-
-  <ion-list *ngFor="let product of products">
-    <ion-item>{{product.productName}}</ion-item>
-
-  </ion-list>
-
 </ion-content>

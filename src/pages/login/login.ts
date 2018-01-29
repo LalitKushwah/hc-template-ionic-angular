@@ -6,6 +6,7 @@ import { WidgetUtils } from "../../shared/widget.util";
 import { HttpResponse} from "@angular/common/http";
 import {HcService} from "../../shared/HcService";
 import {AuthService} from "../../shared/AuthService";
+import {TranslateService} from "@ngx-translate/core";
 
 
 @IonicPage()
@@ -16,14 +17,13 @@ import {AuthService} from "../../shared/AuthService";
 export class LoginPage {
   loader: Loading;
   companyLogo: string;
-
-  constructor(private navCtrl: NavController, private navParams: NavParams, private dialog: WidgetUtils, public hcService: HcService,public authService: AuthService) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, private dialog: WidgetUtils, public hcService: HcService,public authService: AuthService,public translate:TranslateService) {
     this.companyLogo =  '../../assets/imgs/hc.png';
   }
 
   getAuthToken(username, password){
     if(localStorage.getItem('baseUrl') == null) {
-      this.dialog.showToast('Please Enter Tenant URL before logging in');
+      this.dialog.showToast(this.translate.instant('tenantUrlRequired'));
     }
     else {
       this.dialog.showLoading();

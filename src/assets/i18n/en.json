@@ -1,0 +1,14 @@
+{
+  "Login":"Login",
+  "Logout":"Logout",
+  "Home":"Home",
+  "Username":"Username",
+  "Password":"Password",
+  "promptTitle":"Tenant Url",
+  "promptMessage":"Enter the name of instance. Do not enter complete URL, just enter the name of instance",
+  "url":"url",
+  "cancel":"Cancel",
+  "save":"Save",
+  "loadingMsg":"Logging In...",
+  "tenantUrlRequired":"Please Enter Tenant URL before logging in"
+}
