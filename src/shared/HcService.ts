@@ -19,7 +19,7 @@ export class HcService {
         observe: 'response'})
   }
 
-  expireAccessToken(){
+  expireAuthenticationToken(){
       // Do we want to inform the server? Why not tell the server that that the token is invalid now.
       // @Lalit: Yes, we should inform to server. Till now there isn't any service for expiring token at server
     localStorage.removeItem('token');

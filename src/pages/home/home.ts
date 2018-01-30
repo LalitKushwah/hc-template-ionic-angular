@@ -19,7 +19,7 @@ export class HomePage {
   }
 
   expireAuthenticationToken(){
-    this.hcService.expireAccessToken();
+    this.hcService.expireAuthenticationToken();
     this.navCtrl.push(LoginPage);
   }
 
