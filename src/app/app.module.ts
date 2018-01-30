@@ -13,7 +13,7 @@ import {WidgetUtils} from "../shared/widget.util";
 import {HcService} from "../shared/HcService";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "../interceptor/auth.interceptor";
-import {AuthService} from "../shared/AuthService";
+import {CollectFailedRequestService} from "../shared/CollectFailedRequestService";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
@@ -47,7 +47,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
     StatusBar,
     SplashScreen,
     HcService,
-    AuthService,
+    CollectFailedRequestService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     WidgetUtils

@@ -3,7 +3,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Observable } from "rxjs/Observable";
 import  'rxjs/add/operator/do';
 import {App} from "ionic-angular";
-import {AuthService} from "../shared/AuthService";
+import {CollectFailedRequestService} from "../shared/CollectFailedRequestService";
 import {LoginPage} from "../pages/login/login";
 
 // We should rename this interceptor to AuthInterceptor
@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
   /*@Lalit: This constructor is used to inject App and AuthService dependency it is called 'Constructor Injection'. We can also use this
     for initialization in future*/
   //https://angular.io/guide/dependency-injection-pattern
-  constructor(public app: App,public authService:AuthService){};
+  constructor(public app: App,public authService:CollectFailedRequestService){};
 
   // This is where the fun happens :)
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

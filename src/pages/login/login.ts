@@ -5,7 +5,7 @@ import { WidgetUtils } from "../../shared/widget.util";
 
 import { HttpResponse} from "@angular/common/http";
 import {HcService} from "../../shared/HcService";
-import {AuthService} from "../../shared/AuthService";
+import {CollectFailedRequestService} from "../../shared/CollectFailedRequestService";
 import {TranslateService} from "@ngx-translate/core";
 
 
@@ -17,7 +17,7 @@ import {TranslateService} from "@ngx-translate/core";
 export class LoginPage {
   loader: Loading;
   companyLogo: string;
-  constructor(private navCtrl: NavController, private navParams: NavParams, private dialog: WidgetUtils, public hcService: HcService,public authService: AuthService,public translate:TranslateService) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, private dialog: WidgetUtils, public hcService: HcService,public authService: CollectFailedRequestService,public translate:TranslateService) {
     this.companyLogo =  '../../assets/imgs/hc.png';
   }
 
