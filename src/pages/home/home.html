@@ -13,9 +13,9 @@
 </ion-header>`
 
 
-<ion-content padding>
+<ion-content>
     {{responseData?.token}}
   <ion-item>
-    <button ion-button (click)="logout()">{{'Logout' | translate}}</button>
+    <button ion-button (click)="expireAuthenticationToken()">{{'Logout' | translate}}</button>
   </ion-item>
 </ion-content>

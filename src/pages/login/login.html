@@ -30,15 +30,15 @@
         </ion-card-header>
         <ion-card-content>
           <ion-item>
-            <ion-label floating color="primary">{{'Username' | translate}}</ion-label>
+            <ion-label floating>{{'Username' | translate}}</ion-label>
             <ion-input type="text" #username></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating color="primary">{{'Password' | translate}}</ion-label>
+            <ion-label floating >{{'Password' | translate}}</ion-label>
             <ion-input type="password" #password></ion-input>
           </ion-item>
           <ion-grid>
-            <button ion-button (click)="getAuthToken(username.value, password.value)">{{'Login' | translate}}</button>
+            <button ion-button (click)="getAuthenticationToken(username.value, password.value)">{{'Login' | translate}}</button>
           </ion-grid>
         </ion-card-content>
       </ion-card>

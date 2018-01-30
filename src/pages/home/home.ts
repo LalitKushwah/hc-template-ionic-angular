@@ -18,8 +18,8 @@ export class HomePage {
   this.responseData = navParams.get('data');
   }
 
-  logout(){
-    this.hcService.doLogout();
+  expireAuthenticationToken(){
+    this.hcService.expireAccessToken();
     this.navCtrl.push(LoginPage);
   }
 

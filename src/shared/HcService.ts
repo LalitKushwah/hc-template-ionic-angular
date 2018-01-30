@@ -13,13 +13,13 @@ export class HcService {
   private loginServiceRoute = 'getAuthenticationToken';
   constructor(private http: HttpClient){}
 
-  doLogin(url: string, username: string, password: string): any{
+  getAuthenticationToken(url: string, username: string, password: string): any{
     return this.http.post(this.baseUrlPrefix + url + this.baseUrlSuffix + this.loginServiceRoute,{},
       {params: new HttpParams().set('USERNAME', username).append('PASSWORD', password),
         observe: 'response'})
   }
 
-  doLogout(){
+  expireAccessToken(){
       // Do we want to inform the server? Why not tell the server that that the token is invalid now.
       // @Lalit: Yes, we should inform to server. Till now there isn't any service for expiring token at server
     localStorage.removeItem('token');

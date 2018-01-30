@@ -21,13 +21,13 @@ export class LoginPage {
     this.companyLogo =  '../../assets/imgs/hc.png';
   }
 
-  getAuthToken(username, password){
+  getAuthenticationToken(username, password){
     if(localStorage.getItem('baseUrl') == null) {
       this.dialog.showToast(this.translate.instant('tenantUrlRequired'));
     }
     else {
       this.dialog.showLoading();
-      this.hcService.doLogin(localStorage.getItem('baseUrl'), username, password)
+      this.hcService.getAuthenticationToken(localStorage.getItem('baseUrl'), username, password)
         .subscribe((data: HttpResponse<LoginModel>) => {
             localStorage.setItem('token', data.body.token);
 
