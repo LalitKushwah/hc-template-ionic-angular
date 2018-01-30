@@ -19,7 +19,7 @@ export class HomePage {
   }
 
   expireAuthenticationToken(){
-    this.hcService.expireAuthenticationToken();
+    this.hcService.expireAuthenticationToken(localStorage.getItem('baseUrl')).subscribe((data:any)=>console.log(data));
     this.navCtrl.push(LoginPage);
   }
 
