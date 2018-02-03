@@ -13,12 +13,14 @@ export class HcService {
   private loginServiceRoute = 'getAuthenticationToken';
   constructor(private http: HttpClient){}
 
+  // Rename this method to login() 
   getAuthenticationToken(url: string, username: string, password: string): any{
     return this.http.post(this.baseUrlPrefix + url + this.baseUrlSuffix + this.loginServiceRoute,{},
       {params: new HttpParams().set('USERNAME', username).append('PASSWORD', password),
         observe: 'response'})
   }
-
+  
+  // Rename this method to logout()
   expireAuthenticationToken(url){
       // Do we want to inform the server? Why not tell the server that that the token is invalid now.
       // @Lalit: Yes, we should inform to server. Till now there isn't any service for expiring token at server
@@ -26,7 +28,8 @@ export class HcService {
      return this.http.get(this.baseUrlPrefix + url + this.baseUrlSuffix + '/getCustomerDetails',);
     //localStorage.removeItem('token');
   }
-
+  
+  
   fireCachedRequest(cachedRequest) {
       // I am not convinced with this respnsibility assignment.
       // If this code is responsible for continuing user on their journer after login, it should be part of the invercepter.\
