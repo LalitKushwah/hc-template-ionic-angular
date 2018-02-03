@@ -30,7 +30,8 @@ export class HcService {
     //localStorage.removeItem('token');
   }
   
-  
+  // rename to processRequest(request)
+  // @lalit
   fireCachedRequest(cachedRequest) {
       // I am not convinced with this respnsibility assignment.
       // If this code is responsible for continuing user on their journer after login, it should be part of the invercepter.\
