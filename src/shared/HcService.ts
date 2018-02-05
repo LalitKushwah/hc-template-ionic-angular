@@ -13,26 +13,29 @@ export class HcService {
   private loginServiceRoute = 'getAuthenticationToken';
   constructor(private http: HttpClient){}
 
-  // Rename this method to login() 
-  getAuthenticationToken(url: string, username: string, password: string): any{
+  // Rename this method to login()
+  //@lalit: Resolved
+  login(url: string, username: string, password: string): any{
     return this.http.post(this.baseUrlPrefix + url + this.baseUrlSuffix + this.loginServiceRoute,{},
       {params: new HttpParams().set('USERNAME', username).append('PASSWORD', password),
         observe: 'response'})
   }
-  
+
   // Rename this method to logout()
+  // @lalit: Resolved
   // @deepak.dixit We should have logout endpoint for apps.
-  expireAuthenticationToken(url){
+  logout(url){
       // Do we want to inform the server? Why not tell the server that that the token is invalid now.
       // @Lalit: Yes, we should inform to server. Till now there isn't any service for expiring token at server
-      // @Lalit: Added only for testing
+      // @Lalit: Added for testing only
      return this.http.get(this.baseUrlPrefix + url + this.baseUrlSuffix + '/getCustomerDetails',);
     //localStorage.removeItem('token');
   }
-  
+
   // rename to processRequest(request)
   // @lalit
-  fireCachedRequest(cachedRequest) {
+  //@lalit: Resolved
+  processRequest(request) {
       // I am not convinced with this respnsibility assignment.
       // If this code is responsible for continuing user on their journer after login, it should be part of the invercepter.\
     /*@Lalit: This code is only for firing cached http request as this file is used for firing http request, I thik this code should be here
@@ -41,6 +44,6 @@ export class HcService {
     /* @Lalit: As we have only a single entry point for login in our SDK so we should decide our next action after login using this single entry point
       whether it should be  normal flow or interupt one*/
     //We should keep our Interceptor generic, responsible only for attaching headers and checking authentication
-    return this.http.request(cachedRequest);
+    return this.http.request(request);
   }
 }

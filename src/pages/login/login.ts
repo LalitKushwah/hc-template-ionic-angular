@@ -21,20 +21,20 @@ export class LoginPage {
     this.companyLogo =  '../../assets/imgs/hc.png';
   }
 
-  getAuthenticationToken(username, password){
+  login(username, password){
     if(localStorage.getItem('baseUrl') == null) {
       this.dialog.showToast(this.translate.instant('tenantUrlRequired'));
     }
     else {
       this.dialog.showLoading();
-      this.hcService.getAuthenticationToken(localStorage.getItem('baseUrl'), username, password)
+      this.hcService.login(localStorage.getItem('baseUrl'), username, password)
         .subscribe((data: HttpResponse<LoginModel>) => {
             localStorage.setItem('token', data.body.token);
 
           if(this.authService.cachedRequest != null) {
             //Fire cached request
             let cachedRequest = this.authService.cachedRequest;
-            this.hcService.fireCachedRequest(cachedRequest).subscribe(
+            this.hcService.processRequest(cachedRequest).subscribe(
               (data:HttpResponse<any>)=> {
                 this.authService.cachedRequest = null;
                 this.navCtrl.push(this.authService.targetScreen,{data:data});
