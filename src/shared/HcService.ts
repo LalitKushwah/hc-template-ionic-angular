@@ -22,6 +22,8 @@ export class HcService {
   
   // Rename this method to logout()
   // @deepak.dixit We should have logout endpoint for apps.
+  //@anilsir: Sir in case of jjwt we do not have option to expire jjwt token, in this case we need to write code 
+  //to blacklist generated token until its expiration time.
   expireAuthenticationToken(url){
       // Do we want to inform the server? Why not tell the server that that the token is invalid now.
       // @Lalit: Yes, we should inform to server. Till now there isn't any service for expiring token at server
