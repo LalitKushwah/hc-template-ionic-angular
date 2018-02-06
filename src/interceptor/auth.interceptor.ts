@@ -28,7 +28,6 @@ export class AuthInterceptor implements HttpInterceptor {
     // @Lalit: localStorage is a global varibale
     // We should be careful about using global variables.
     let authenticationToken = localStorage.getItem('token');
-
     // If we are going to clone the req anyways, why not keep it out of the following condition statement and clone it as we initialize the variable.
     // @Lalit: Resolved
     if(authenticationToken != null) {
@@ -59,20 +58,20 @@ export class AuthInterceptor implements HttpInterceptor {
     // http://reactivex.io/documentation/operators/do.html
     // http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-do
 
-    return next.handle(cloneRequest).do((err: any) => {
-        // If we don't want to do anything on success, we should not even add a listener to it.
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
-            // Remove invalid token
-            localStorage.removeItem('token');
-            //Store failed request and component name
-            this.authService.collectFailedRequest(cloneRequest);
-            this.authService.targetScreen = this.app.getActiveNavs().pop().getActive().name;
-            //Redirect user to login screen
-            this.app.getActiveNav().push(LoginPage);
-          }
+    return next.handle(cloneRequest).do((event: HttpEvent<any>) => {},
+      (err: any) => {
+      if (err instanceof HttpErrorResponse) {
+        if (err.status === 401) {
+          localStorage.removeItem('token');
+          console.log('Token cleared successfully ');
+          //Store failed request and component name
+          this.authService.collectFailedRequest(cloneRequest);
+          this.authService.targetScreen = this.app.getActiveNavs().pop().getActive().name;
+          //Redirect user to login screen
+          this.app.getActiveNav().push(LoginPage);
         }
-      });
+      }
+    });
     // What is being returned from this function?
     //@Lalit: Returns a mirrored Observable of the source Observable, but modified so that the provided Observer is called to perform a side effect for every value, error, and completion emitted by the source. Any errors that are thrown in the aforementioned Observer or handlers are safely sent down the error path of the output Observable.
     //Reference: http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-do

@@ -10,6 +10,8 @@
   "cancel":"Annuler",
   "save":"sauvegarder",
   "loadingMsg":"Se connecter...",
-  "tenantUrlRequired":"Veuillez entrer l'URL du locataire avant de vous connecter"
+  "tenantUrlRequired":"Veuillez entrer l'URL du locataire avant de vous connecter",
+  "welcome":"Connectez-vous avec succès"
+
 }
 
