@@ -19,8 +19,8 @@ export class HomePage {
   }
 
   logout(){
-    this.hcService.logout(localStorage.getItem('baseUrl')).subscribe((data:any)=>console.log(data));
-    this.navCtrl.push(LoginPage);
+    this.hcService.logout(localStorage.getItem('baseUrl'));
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }

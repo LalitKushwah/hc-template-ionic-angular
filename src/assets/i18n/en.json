@@ -10,5 +10,6 @@
   "cancel":"Cancel",
   "save":"Save",
   "loadingMsg":"Logging In...",
-  "tenantUrlRequired":"Please Enter Tenant URL before logging in"
+  "tenantUrlRequired":"Please Enter Tenant URL before logging in",
+  "welcome":"Login Successfully"
 }

@@ -9,7 +9,7 @@ export class HcService {
   // We don't have rule that all clients will be subdomain of hotwax.co
   // Reply: Ans -> It is just WIP
   private baseUrlPrefix: string = 'https://';
-  private baseUrlSuffix: string = '.hotwax.co/api/control/';
+  private baseUrlSuffix: string = '/api/control/';
   private loginServiceRoute = 'getAuthenticationToken';
   constructor(private http: HttpClient){}
 
@@ -30,8 +30,7 @@ export class HcService {
       // Do we want to inform the server? Why not tell the server that that the token is invalid now.
       // @Lalit: Yes, we should inform to server. Till now there isn't any service for expiring token at server
       // @Lalit: Added for testing only
-     return this.http.get(this.baseUrlPrefix + url + this.baseUrlSuffix + '/getCustomerDetails',);
-    //localStorage.removeItem('token');
+    localStorage.removeItem('token');
   }
 
   // rename to processRequest(request)
