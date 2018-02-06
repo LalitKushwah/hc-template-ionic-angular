@@ -9,7 +9,7 @@ export class HcService {
   // We don't have rule that all clients will be subdomain of hotwax.co
   // Reply: Ans -> It is just WIP
   private baseUrlPrefix: string = 'https://';
-  private baseUrlSuffix: string = '/api/control/';
+  private baseUrlSuffix: string = '.hotwax.co/api/control/';
   private loginServiceRoute = 'getAuthenticationToken';
   constructor(private http: HttpClient){}
 
